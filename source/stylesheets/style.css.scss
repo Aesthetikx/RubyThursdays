@@ -1,12 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
 
 $padding: 12px;
+
+$pink: #FF0047;
+$blue: #79D2AA;
+$green: #9AE094;
+$yellow: #F8FF94;
 
 $white: #F8F8F8;
 $black: #232323;
 $gray: #484848;
-$accent: #FF0047;
+$accent: $pink;
+
+@import "hljs";
 
 html {
   color: $black;
@@ -23,7 +31,10 @@ div#container, div#main, aside {
 }
 
 @media (max-width: 1159px) {
-
+  div.article span.date, span.tagline {
+    clear: both;
+    display: block;
+  }
 }
 
 @media (min-width: 1160px) {
@@ -111,4 +122,12 @@ span.date, span.tagline {
 a {
   text-decoration: none;
   color: $accent;
+}
+
+code.hljs {
+  font-family: 'Source Code Pro';
+  font-weight: 500;
+  max-width: 700px;
+  margin-left: 2em;
+  border-radius: 4px;
 }
