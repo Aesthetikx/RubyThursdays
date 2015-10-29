@@ -30,33 +30,6 @@ div#container, div#main, aside {
   padding: $padding;
 }
 
-@media (max-width: 1159px) {
-  div.article span.date, span.tagline {
-    clear: both;
-    display: block;
-  }
-}
-
-@media (min-width: 1160px) {
-
-  div#container {
-    width: 1160px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  div#main {
-    width: 904px - 2 * $padding;
-    float: left;
-  }
-
-  aside {
-    width: 256px - 2 * $padding;
-    float: right;
-    height: 100%;
-  }
-}
-
 aside {
 
   ul, ol {
@@ -108,7 +81,7 @@ h1.title {
   }
 
   &.site-title {
-    font-size: 3em;
+    font-size: 2.8em;
     margin-bottom: 0px;
   }
 }
@@ -130,4 +103,35 @@ code.hljs {
   max-width: 700px;
   margin-left: 2em;
   border-radius: 4px;
+}
+
+@media (max-width: 1159px) {
+  div.article span.date, span.tagline {
+    clear: both;
+    display: block;
+  }
+
+  h1.title.site-title {
+    font-size: 2.4em;
+  }
+}
+
+@media (min-width: 1160px) {
+
+  div#container {
+    width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div#main {
+    width: 904px - 2 * $padding;
+    float: left;
+  }
+
+  aside {
+    width: 256px - 2 * $padding;
+    float: right;
+    height: 100%;
+  }
 }
