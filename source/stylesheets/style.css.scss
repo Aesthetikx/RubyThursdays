@@ -66,6 +66,10 @@ aside {
 
 div.article {
   padding-top: 2em;
+  p {
+    max-width: 720px;
+    margin-left: 1em;
+  }
 }
 
 div.paginate {
