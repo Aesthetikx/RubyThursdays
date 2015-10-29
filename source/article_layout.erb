@@ -1,0 +1,7 @@
+<% wrap_layout :layout do %>
+  <div class="article">
+    <h1 class="title"><%= link_to current_article.title, current_article %></h1>
+    <span class="date"><%= current_article.pretty_date %></span>
+    <%= yield %>
+  </div>
+<% end %>

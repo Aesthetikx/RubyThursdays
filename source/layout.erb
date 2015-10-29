@@ -3,36 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <title>Blog Title<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <title><%= blog.name %><%= ' - ' + current_article.title unless current_article.nil? %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+    <%= stylesheet_link_tag :style %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' %>
   </head>
   <body>
-    
-    <div id="main" role="main">
-      <%= yield %>
+    <div id="container">
+
+      <div id="main" role="main">
+        <h1 class="title site-title"><a href="/"><emph>Ruby</emph>Thursdays</a></h1>
+        <span class="tagline">Hype tagline</span>
+
+        <%= yield %>
+
+      </div>
+
+      <aside>
+        <h2>Recent Articles</h2>
+        <ol>
+          <% blog.articles[0...10].each do |article| %>
+            <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li>
+          <% end %>
+        </ol>
+
+        <h2>Tags</h2>
+        <ol>
+          <% blog.tags.each do |tag, articles| %>
+            <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
+          <% end %>
+        </ol>
+
+        <h2>By Year</h2>
+        <ol>
+          <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
+            <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
+          <% end %>
+        </ol>
+
+        <div id="side-footer">
+          John DeSilva
+          <ul>
+            <li><a href="https://github.com/Aesthetikx">github/aesthetikx</a></li>
+            <li><a href="https://twitter.com/Aesthetikx">twitter/aesthetikx</a></li>
+          </ul>
+        </div>
+      </aside>
+
     </div>
-    
-    <aside>
-      <h2>Recent Articles</h2>
-      <ol>
-        <% blog.articles[0...10].each do |article| %>
-          <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li>
-        <% end %>
-      </ol>
-
-      <h2>Tags</h2>
-      <ol>
-        <% blog.tags.each do |tag, articles| %>
-          <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
-        <% end %>
-      </ol>
-
-      <h2>By Year</h2>
-      <ol>
-        <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
-          <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
-        <% end %>
-      </ol>
-    </aside>
   </body>
 </html>

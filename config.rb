@@ -4,7 +4,21 @@
 
 # Time.zone = "UTC"
 
+class Middleman::Blog::BlogData
+  def name
+    @options[:name]
+  end
+end
+
+class Middleman::Sitemap::Resource
+  def pretty_date
+    date.strftime("%B %e, %Y")
+  end
+end
+
 activate :blog do |blog|
+  blog.name = "RubyThursdays"
+
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
@@ -12,7 +26,7 @@ activate :blog do |blog|
   # Matcher for blog source files
   # blog.sources = "{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
-  # blog.layout = "layout"
+  blog.layout = "article_layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   # blog.year_link = "{year}.html"

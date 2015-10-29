@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400);
+
+$padding: 12px;
+
+$white: #F8F8F8;
+$black: #232323;
+$gray: #484848;
+$accent: #FF0047;
+
+html {
+  color: $black;
+  background: $white;
+}
+
+body {
+  overflow-y: scroll;
+  font-family: 'Merriweather', serif;
+}
+
+div#container, div#main, aside {
+  padding: $padding;
+}
+
+@media (max-width: 1159px) {
+
+}
+
+@media (min-width: 1160px) {
+
+  div#container {
+    width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div#main {
+    width: 904px - 2 * $padding;
+    float: left;
+  }
+
+  aside {
+    width: 256px - 2 * $padding;
+    float: right;
+    height: 100%;
+  }
+}
+
+aside {
+
+  ul, ol {
+    margin-top: 4px;
+    padding-left: 1em;
+    list-style-type: none;
+  }
+
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  div#side-footer {
+    margin-top: 3em;
+    color: $gray;
+  }
+}
+
+div.article {
+  padding-top: 2em;
+}
+
+h1.title {
+
+  display: inline;
+
+  margin-top: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.25em;
+
+  a {
+    font-weight: 400;
+    color: $accent;
+    emph {
+      color: $black;
+      font-weight: 700;
+    }
+  }
+
+  &.site-title {
+    font-size: 3em;
+    margin-bottom: 0px;
+  }
+}
+
+span.date, span.tagline {
+  font-style: italic;
+  font-family: 'Merriweather', serif;
+  color: $gray;
+}
+
+a {
+  text-decoration: none;
+  color: $accent;
+}
