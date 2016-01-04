@@ -16,6 +16,12 @@ class Middleman::Sitemap::Resource
   end
 end
 
+class Middleman::Application
+  def code_sample(path)
+    File.open(path).read.each_line.map { |line| "    " + line }.join
+  end
+end
+
 activate :blog do |blog|
   blog.name = "RubyThursdays"
 
